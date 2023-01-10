@@ -1,6 +1,5 @@
-import 'package:bloggie/Commentui.dart';
 import 'package:bloggie/home.dart';
-
+import 'package:bloggie/mainscreen.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
@@ -43,7 +42,7 @@ class _draftState extends State<draft> {
                     onTap: () {
                       Navigator.push(
                         context,
-                        MaterialPageRoute(builder: (context) => home()),
+                        MaterialPageRoute(builder: (context) => mainscreen()),
                       );
                     },
                     child: Icon(Icons.close_sharp),

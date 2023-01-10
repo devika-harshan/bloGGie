@@ -1,6 +1,5 @@
-import 'package:bloggie/Commentui.dart';
 import 'package:bloggie/editprofile.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:bloggie/UserState.dart';

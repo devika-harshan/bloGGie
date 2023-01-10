@@ -1,4 +1,3 @@
-import 'package:bloggie/home.dart';
 import 'package:bloggie/mainscreen.dart';
 import 'package:flutter/material.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -34,6 +33,7 @@ class _ProfileDetailState extends State<ProfileDetail> {
                     'Tell About You',
                     style: TextStyle(fontSize: 30),
                   ),
+                  SizedBox(height: 10.0),
                   CircleAvatar(
                     radius: 45,
                     backgroundImage: NetworkImage(
@@ -43,11 +43,8 @@ class _ProfileDetailState extends State<ProfileDetail> {
                 ],
               )),
             ),
-            SizedBox(
-              height: 15.0,
-            ),
             Padding(
-              padding: EdgeInsets.only(left: 30, right: 30, bottom: 20),
+              padding: EdgeInsets.only(left: 30, right: 30, bottom: 16),
               child: Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 20,
@@ -70,7 +67,7 @@ class _ProfileDetailState extends State<ProfileDetail> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 30, right: 30, bottom: 20),
+              padding: EdgeInsets.only(left: 30, right: 30, bottom: 16),
               child: Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 20,
@@ -93,7 +90,7 @@ class _ProfileDetailState extends State<ProfileDetail> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 30, right: 30, bottom: 20),
+              padding: EdgeInsets.only(left: 30, right: 30, bottom: 16),
               child: Container(
                 height: 100,
                 padding: const EdgeInsets.symmetric(
@@ -117,7 +114,7 @@ class _ProfileDetailState extends State<ProfileDetail> {
               ),
             ),
             Padding(
-              padding: EdgeInsets.only(left: 30, right: 30, bottom: 20),
+              padding: EdgeInsets.only(left: 30, right: 30, bottom: 16),
               child: Container(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 20,

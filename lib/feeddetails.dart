@@ -1,5 +1,4 @@
 import 'package:bloggie/Commentui.dart';
-import 'package:bloggie/Profile.dart';
 import 'package:like_button/like_button.dart';
 import 'package:flutter/material.dart';
 
@@ -51,15 +50,18 @@ class _feeddetailsState extends State<feeddetails> {
                         TextStyle(fontSize: 25, fontWeight: FontWeight.w600)),
               ),
             ),
-            Align(
-              alignment: AlignmentDirectional(-1, -1),
-              child: Padding(
-                padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
-                child: SingleChildScrollView(
-                  child: Text(
-                    widget.body,
-                    textAlign: TextAlign.start,
-                    style: TextStyle(fontSize: 18),
+            Flexible(
+              fit: FlexFit.loose,
+              child: Align(
+                alignment: AlignmentDirectional(-1, -1),
+                child: Padding(
+                  padding: EdgeInsetsDirectional.fromSTEB(20, 0, 20, 0),
+                  child: SingleChildScrollView(
+                    child: Text(
+                      widget.body,
+                      textAlign: TextAlign.start,
+                      style: TextStyle(fontSize: 18),
+                    ),
                   ),
                 ),
               ),

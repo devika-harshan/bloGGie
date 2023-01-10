@@ -1,9 +1,7 @@
-import 'package:bloggie/Register.dart';
-import 'package:bloggie/login.dart';
-import 'package:carousel_slider/carousel_slider.dart';
+import 'Register.dart';
+import 'login.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:carousel_slider/carousel_slider.dart';
 
 class welcome extends StatefulWidget {
   _welcomeState createState() => _welcomeState();
@@ -16,88 +14,32 @@ class _welcomeState extends State<welcome> {
       // Application name
 
       home: Scaffold(
-        backgroundColor: Color(0xffFCFCFC),
-        body: SafeArea(
-            child: Column(
+        backgroundColor: Color(0xffFEF3F0),
+        body: Column(
           children: [
-            Column(
-              mainAxisSize: MainAxisSize.max,
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Hero(
-                  tag: 'logo',
-                  child: Align(
-                    alignment: AlignmentDirectional(0, 0),
-                    child: Image.asset(
-                      'images/bloggie.PNG',
-                      width: 201.6,
-                      height: 100,
-                      fit: BoxFit.cover,
-                    ),
+            Padding(
+              padding: const EdgeInsets.only(top: 10.0),
+              child: Center(
+                child: Container(
+                  child: Image.asset(
+                    'images/blogg.png',
+                    width: 201.6,
+                    height: 100,
+                    fit: BoxFit.cover,
                   ),
                 ),
-                Text(
-                  'Express more than writings',
-                  style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
-                ),
-              ],
+              ),
             ),
-            SizedBox(height: 50),
-            CarouselSlider(
-              items: [
-                //1st Image of Slider
-
-                Container(
-                  width: 250,
-                  margin: EdgeInsets.all(6.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.0),
-                    image: DecorationImage(
-                      image: AssetImage("images/welcomepage1.jpg"),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-
-                //2nd Image of Slider
-
-                Container(
-                  width: 250,
-                  margin: EdgeInsets.all(6.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.0),
-                    image: DecorationImage(
-                      image: AssetImage("images/welcomepage2.jpg"),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-
-                //3rd Image of Slider
-
-                Container(
-                  width: 250,
-                  margin: EdgeInsets.all(6.0),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8.0),
-                    image: DecorationImage(
-                      image: AssetImage("images/wecome.PNG"),
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                ),
-              ],
-
-              //Slider Container properties
-              options: CarouselOptions(
-                height: 300.0,
-                enlargeCenterPage: true,
-                autoPlay: true,
-                aspectRatio: 16 / 9,
-                autoPlayCurve: Curves.fastOutSlowIn,
-                enableInfiniteScroll: true,
-                autoPlayAnimationDuration: Duration(milliseconds: 800),
-                viewportFraction: 0.8,
+            Text(
+              'Express more than writings',
+              style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16.0),
+            ),
+            SizedBox(height: 20),
+            Container(
+              child: Image.asset(
+                'images/drib1.PNG',
+                height: 300,
+                fit: BoxFit.cover,
               ),
             ),
             SizedBox(height: 50),
@@ -109,7 +51,7 @@ class _welcomeState extends State<welcome> {
                 elevation: 3,
                 shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(32.0)),
-                minimumSize: Size(330, 45), //////// HERE
+                minimumSize: Size(330, 45),
               ),
               onPressed: () {
                 Navigator.push(
@@ -141,7 +83,7 @@ class _welcomeState extends State<welcome> {
               ),
             )
           ],
-        )),
+        ),
       ),
     );
   }
