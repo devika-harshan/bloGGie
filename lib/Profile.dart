@@ -28,7 +28,7 @@ class _ProfileState extends State<Profile> {
     final String gen = Provider.of<UserState>(context).userGen;
     final String abt = Provider.of<UserState>(context).userAbout;
     return Scaffold(
-      body: // Generated code for this Stack Widget...
+      body: 
           Column(
         children: [
           Container(
