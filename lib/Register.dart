@@ -12,6 +12,7 @@ class Register extends StatefulWidget {
 
 class _RegisterState extends State<Register> {
   String? email;
+  String? exep;
   String? password;
   String? username;
   bool invisible = false;
@@ -66,7 +67,7 @@ class _RegisterState extends State<Register> {
                       onChanged: (value) {
                         email = value;
                       },
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: UnderlineInputBorder(),
                         labelText: 'Email',
                       ),
@@ -75,7 +76,7 @@ class _RegisterState extends State<Register> {
                       onChanged: (value) {
                         username = value;
                       },
-                      decoration: const InputDecoration(
+                      decoration: InputDecoration(
                         border: UnderlineInputBorder(),
                         labelText: 'Username',
                       ),
@@ -111,44 +112,62 @@ class _RegisterState extends State<Register> {
                   textAlign: TextAlign.center),
             ),
             SizedBox(height: 10),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Color(0xff540961),
-                onPrimary: Colors.white,
-                shadowColor: Color(0xffe2a1ed),
-                elevation: 3,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0)),
-                minimumSize: Size(310, 50), //////// HERE
-              ),
-              onPressed: () async {
-                try {
-                  final newuser = await FirebaseAuth.instance
-                      .createUserWithEmailAndPassword(
-                    email: email ?? 'error',
-                    password: password ?? 'error',
-                  );
-
-                  await FirebaseFirestore.instance
-                      .collection('Users')
-                      .doc(newuser.user!.uid)
-                      .set({'uname': username});
-
-                  if (newuser != null) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => ProfileDetail(
-                                myuser: newuser,
-                              )),
+            Builder(builder: (context) {
+              return ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xff540961),
+                  onPrimary: Colors.white,
+                  shadowColor: Color(0xffe2a1ed),
+                  elevation: 3,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0)),
+                  minimumSize: Size(310, 50), //////// HERE
+                ),
+                onPressed: () async {
+                  try {
+                    final newuser = await FirebaseAuth.instance
+                        .createUserWithEmailAndPassword(
+                      email: email ?? 'error',
+                      password: password ?? 'error',
                     );
+
+                    await FirebaseFirestore.instance
+                        .collection('Users')
+                        .doc(newuser.user!.uid)
+                        .set({'uname': username});
+
+                    if (newuser != null) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ProfileDetail(
+                                  myuser: newuser,
+                                )),
+                      );
+                    }
+                  } on FirebaseAuthException catch (e) {
+                    if (e.code == 'invalid-email') {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text('The email address is badly formatted'),
+                      ));
+                    }
+                    if (e.code == 'weak-password') {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text(
+                              'Password should be at least 6 characters')));
+                    }
+                    if (e.code == 'email-already-in-use') {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                          content: Text(
+                              'The email address is already in use by another account')));
+                    }
+
+                    print(e);
                   }
-                } catch (e) {
-                  print(e);
-                }
-              },
-              child: Text('Start Reading'),
-            ),
+                },
+                child: Text('Start Reading'),
+              );
+            }),
             SizedBox(height: 20),
             TextButton(
               style: ButtonStyle(
