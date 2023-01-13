@@ -28,7 +28,7 @@ class _ProfileState extends State<Profile> {
     final String gen = Provider.of<UserState>(context).userGen;
     final String abt = Provider.of<UserState>(context).userAbout;
     return Scaffold(
-      body: 
+      body: // Generated code for this Stack Widget...
           Column(
         children: [
           Container(
@@ -117,7 +117,7 @@ class _ProfileState extends State<Profile> {
                 ),
               ),
               Divider(
-              thickness: 1.5,
+                thickness: 1.5,
               ),
               Padding(
                 padding: const EdgeInsets.only(top: 20, left: 10.0, bottom: 10),
