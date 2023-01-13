@@ -86,34 +86,53 @@ class _loginState extends State<login> {
                 ),
               ),
             ),
-            ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                primary: Color(0xff540961),
-                onPrimary: Colors.white,
-                shadowColor: Color(0xffe2a1ed),
-                elevation: 3,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(10.0)),
-                minimumSize: Size(310, 50), //////// HERE
-              ),
-              onPressed: () async {
-                try {
-                  final user = await FirebaseAuth.instance
-                      .signInWithEmailAndPassword(
-                          email: email ?? "error",
-                          password: password ?? "error");
-                  if (user != null) {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(builder: (context) => mainscreen()),
-                    );
+            Builder(builder: (context) {
+              return ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  primary: Color(0xff540961),
+                  onPrimary: Colors.white,
+                  shadowColor: Color(0xffe2a1ed),
+                  elevation: 3,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0)),
+                  minimumSize: Size(310, 50), //////// HERE
+                ),
+                onPressed: () async {
+                  try {
+                    final user = await FirebaseAuth.instance
+                        .signInWithEmailAndPassword(
+                            email: email ?? "error",
+                            password: password ?? "error");
+                    if (user != null) {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => mainscreen()),
+                      );
+                    }
+                  } on FirebaseAuthException catch (e) {
+                    if (e.code == 'invalid-email') {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text('The email address is badly formatted'),
+                      ));
+                    }
+                    if (e.code == 'user-not-found') {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text(
+                            'There is no user found with this email. The user may have been deleted'),
+                      ));
+                    }
+                    if (e.code == 'wrong-password') {
+                      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                        content: Text(
+                            'The password is invalid or the user does not have a password'),
+                      ));
+                    }
+                    print(e);
                   }
-                } catch (e) {
-                  print(e);
-                }
-              },
-              child: Text('Start Reading'),
-            ),
+                },
+                child: Text('Start Reading'),
+              );
+            }),
             SizedBox(height: 20),
             TextButton(
               style: ButtonStyle(
