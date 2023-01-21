@@ -83,7 +83,7 @@ class _ProfileState extends State<Profile> {
             ),
             height: 270,
             decoration: BoxDecoration(
-              color: Color(0xff744481),
+              color: Color(0xff8d7592),
               borderRadius: BorderRadius.only(
                 bottomLeft: Radius.circular(20),
                 bottomRight: Radius.circular(20),
