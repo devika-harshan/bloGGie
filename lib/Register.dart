@@ -137,8 +137,7 @@ class _RegisterState extends State<Register> {
                         .set({'uname': username});
 
                     if (newuser != null) {
-                      Navigator.push(
-                        context,
+                      Navigator.of(context, rootNavigator: true).push(
                         MaterialPageRoute(
                             builder: (context) => ProfileDetail(
                                   myuser: newuser,
