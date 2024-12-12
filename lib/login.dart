@@ -92,8 +92,8 @@ class _loginState extends State<login> {
               Builder(builder: (context) {
                 return ElevatedButton(
                   style: ElevatedButton.styleFrom(
-                    primary: Color(0xff540961),
-                    onPrimary: Colors.white,
+                    backgroundColor: Color(0xff540961),
+                    foregroundColor: Colors.white,
                     shadowColor: Color(0xffe2a1ed),
                     elevation: 3,
                     shape: RoundedRectangleBorder(
