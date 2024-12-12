@@ -1,8 +1,6 @@
 import 'package:bloggie/ProfileDetail.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-
 import 'package:flutter/material.dart';
-
 import 'package:bloggie/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
@@ -115,8 +113,8 @@ class _RegisterState extends State<Register> {
             Builder(builder: (context) {
               return ElevatedButton(
                 style: ElevatedButton.styleFrom(
-                  primary: Color(0xff540961),
-                  onPrimary: Colors.white,
+                  backgroundColor: Color(0xff540961),
+                  foregroundColor: Colors.white,
                   shadowColor: Color(0xffe2a1ed),
                   elevation: 3,
                   shape: RoundedRectangleBorder(
