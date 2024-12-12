@@ -1,3 +1,4 @@
+import 'package:bloggie/mainscreen.dart';
 import 'Register.dart';
 import 'login.dart';
 import 'package:flutter/material.dart';
@@ -45,8 +46,8 @@ class _welcomeState extends State<welcome> {
             SizedBox(height: 50),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                primary: Colors.black,
-                onPrimary: Colors.white,
+                backgroundColor: Colors.black,
+                foregroundColor: Colors.white,
                 shadowColor: Color(0xff7d817e),
                 elevation: 3,
                 shape: RoundedRectangleBorder(
